@@ -2,57 +2,49 @@ package com.sbcc.model;
 
 public class Batsman extends Player {
 
-	private int noOfHundreds;
-	private int noOfFifties;
-	private double starRating;
+    private int noOfHundreds;
+    private int noOfFifties;
+    private double starRating;
 
-	public Batsman(String playerId, String playerName, int matchesPlayed, String playingZone, int noOfHundreds,
-			int noOfFifties, double starRating) {
-		super(playerId, playerName, matchesPlayed, noOfFifties, playingZone);
-		this.noOfHundreds = noOfHundreds;
-		this.noOfFifties = noOfFifties;
-		this.starRating = starRating;
-	}
+    public Batsman() {
+    }
 
-	public Batsman() 
-	{
-		super();
-	}
+    public Batsman(String playerId, String playerName, int matchesPlayed,
+                   int runScored, String playingZone,
+                   int noOfHundreds, int noOfFifties) {
 
-	public int getNoOfHundreds() 
-	{
-		return noOfHundreds;
-	}
+        super(playerId, playerName, matchesPlayed, runScored, playingZone);
+        this.noOfHundreds = noOfHundreds;
+        this.noOfFifties = noOfFifties;
+        findStarRating();
+    }
 
-	public void setNoOfHundreds(int noOfHundreds) 
-	{
-		this.noOfHundreds = noOfHundreds;
-	}
+    public int getNoOfHundreds() {
+        return noOfHundreds;
+    }
 
-	public int getNoOfFifties() 
-	{
-		return noOfFifties;
-	}
+    public void setNoOfHundreds(int noOfHundreds) {
+        this.noOfHundreds = noOfHundreds;
+    }
 
-	public void setNoOfFifties(int noOfFifties) 
-	{
-		this.noOfFifties = noOfFifties;
-	}
+    public int getNoOfFifties() {
+        return noOfFifties;
+    }
 
-	public double getStarRating() 
-	{
+    public void setNoOfFifties(int noOfFifties) {
+        this.noOfFifties = noOfFifties;
+    }
 
-		return starRating;
-	}
+    public double getStarRating() {
+        return starRating;
+    }
 
-	public void setStarRating(double starRating) {
-		this.starRating = starRating;
-	}
+    public void setStarRating(double starRating) {
+        this.starRating = starRating;
+    }
 
-	public void findStarRating() {
-		
-	
-
-	}
-
+    public void findStarRating() {
+        starRating = ((noOfHundreds * 10.0) + (noOfFifties * 5.0))
+                        * getMatchesPlayed() / 100;
+    }
 }
